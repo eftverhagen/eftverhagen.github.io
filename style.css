@@ -1,0 +1,323 @@
+body {
+    font-size:10px;
+    font-family: "Segoe UI Light";
+	color: #ededed;
+	background-color: rgba(0,0,0,0.9);
+	padding:0;
+	margin:0;
+}
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 20px;
+	font-size: 8px;
+	color: rgba(255,255,255,0.6);
+	background-color: rgba(0,0,0,0.8);
+}
+
+.header .btn {
+	color: #fff;
+	padding: 15px;
+	margin: auto;
+	font-size: 10px;
+}
+
+.button {
+	display:block;
+	width:100%;
+	line-height:20px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	letter-spacing:2px;
+	margin-bottom:1px;
+} 
+
+.level {
+	position: fixed;
+	transition: 0.2s ease-in-out;
+	background-color: rgba(0,0,0,0.5);
+	box-sizing: border-box;
+	width: 100px;
+}
+
+.level .text {
+	position: absolute;
+	line-height: 50px;
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
+	text-align: left;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.level .level-link {
+	display: block;
+	padding: 10px;
+	line-height: 12px;
+	height: 30px;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.level .item {
+	position: relative;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	float: left;
+	box-sizing: border-box;
+	line-height: 10px;
+	padding: 0px 10px;
+	width:100%;
+}
+
+.level .item:hover {
+	position: relative;
+	background-color: rgba(0,0,0,0.8);
+	color: #fff;
+	float: left;
+	box-sizing: border-box;  
+}
+
+.level .item .item-link {
+	display: block;
+	padding: 10px;
+	line-height: 10px;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.level .item .item-link:hover {
+	background-color: rgba(0,0,0,0.5);
+}
+
+.level.left {
+	left: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.level.left .wrapper {
+	margin-right: 30px;
+	height: 100%;
+	overflow-x: auto;
+}
+
+.level.left .text {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 30px;
+}
+
+.level.left .level-link {
+	position: relative;
+	height: 100%;
+	writing-mode: tb-rl;
+}
+
+.sidebar-left {
+	background: rgba(0,0,0,0.3);
+	position: fixed;
+	left:0;
+	top:0;
+	bottom:0;
+	width:100px;
+}
+
+.sidebar-right { 
+	background:rgba(0,0,0,0.3);
+	position:absolute;
+	right:0;
+	top:0;
+	height:100%;
+	width:80px;
+	font-size:8px;
+	color:#efefef;
+}
+
+.sidebar-right .block{
+	height:20px!important;
+}
+
+.canvas {
+	border:1px solid rgba(0,0,0,0.2);
+	height:400px;
+	display:block;
+	width:300px;
+}
+
+.bar {
+	display:inline-block;
+	font-size:4px;
+	letter-spacing:1px;
+	width:1px;
+	color:#fff;
+	writing-mode: tb-rl;
+    transform:rotate(-180deg);
+	border-top:1px;
+}
+
+.tabs {
+	width:200px;
+	height:200px;
+}
+
+.tabsHeader{
+	display:"block";
+	position:"absolute";
+	min-height:"10px";
+	background-color:"rgba(0,0,0,0.2)";
+	top:"0";
+	left:"0";
+	width:"100%";
+}
+
+.tab {
+	display:inline-block;
+	margin-right:1px;
+	background-color:rgba(0,0,0,0.2);
+	line-height:12px;
+	padding:10px;
+}
+
+.viewport {
+	display:block;
+	width:200px;
+	height:auto;
+	border:1px solid rgba(0,0,0,0.8);
+}
+
+.list {
+	display:block;
+	width: 100px;
+	height:auto;
+	
+}
+
+.list .listItem {
+	width: 100px;
+	height:auto;
+	border-bottom:1px solid rgba(0,0,0,.2);
+	line-height:16px;
+}
+
+.console {
+	font-family:"Segoe UI Light";
+	font-size:12px;
+	background:none;
+	border:1px solid rgba(0,0,0,0.3);
+	border-radius:0px;
+}
+
+.view {
+    background:rgba(0,0,0,0.3);
+	position:absolute;
+	left:0px;
+	top:0;
+	width:100%;
+	height:100%;
+	bottom:0;
+	right:100px;
+	margin-top:120px;
+	/*mixin header height ; e.g sass script*/
+}
+
+.view .left {
+	position:absolute;
+	width:50%;
+	border:1px solid rgba(0,0,0,0.8);
+	background:rgba(0,0,0,1);
+	height: 200px;
+}
+
+.view .right { /* oja fixed width */
+	position:absolute;
+	left:200px;
+	width:50%;
+	border:1px solid rgba(0,0,0,0.8);
+	background:rgba(0,0,0,1);
+	height: 200px;
+}
+
+.block {
+	position:relative;
+	float:left;
+	font-size:10px;
+	width:180px;
+	height:180px;
+	border:1px solid rgba(0,0,0,0.8);
+	background:rgba(0,0,0,0.2);
+	color:rgba(255,255,255,0.8);
+	/*overflow:auto;*/
+}
+
+.left {
+    background:rgba(0,0,0,0.3);
+	position:fixed;
+	left:0;
+	bottom:0;
+	top:0;
+	width:50%;
+	border:1px solid rgba(0,0,0,0.8);
+	background:rgba(0,0,0,1);
+}
+
+.right {
+	position:fixed;
+	right:0;
+	bottom:0;
+	top:0;
+	width:50%;
+	border:1px solid rgba(0,0,0,0.8);
+	background:rgba(0,0,0,1);
+}
+
+.split {
+	position:absolute;
+	width:100%;
+	height:50%;
+	border:1px solid rgba(255,255,255,0.3);
+}
+
+.statusBar {
+	display:block;
+	position:fixed;
+	width:300px;
+	line-height:40px;
+	top:0;
+	left:0;
+	color:#fff;
+	font-size:30px;
+}
+
+table td {
+	padding:10px;
+	background-color:rgba(255,255,255,0.1);
+}
+
+table td:hover {
+	background-color:rgba(255,255,255,0);
+}
+
+#fixedMenu {
+	position:fixed;
+	left:0;
+	right:0;
+	top:0;
+	height:80px;
+	font-size:10px;
+	background-color:rgba(0,0,0,0.5);
+}
+
+#fixedMenu .level {
+	position:fixed;
+	display:none;
+	left:0;
+	right:0;
+	top:80px;
+	height:100px;
+	background-color: #c7c7c7;
+}
