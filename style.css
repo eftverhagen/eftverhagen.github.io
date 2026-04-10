@@ -7,6 +7,10 @@ body {
 	margin:0;
 }
 
+[root] {
+	margin-left:100px;
+}
+
 .header {
 	position: fixed;
 	top: 0;
@@ -142,26 +146,32 @@ body {
 	height:20px!important;
 }
 
-.canvas {
-	border:1px solid rgba(0,0,0,0.2);
-	height:400px;
+.chart {
 	display:block;
+	border:1px solid rgba(0,0,0,0.2);
+	background-color:"rgba(255,255,255,0.2)";
+	height:400px;
 	width:300px;
 }
 
 .bar {
 	display:inline-block;
-	font-size:4px;
 	letter-spacing:1px;
-	width:1px;
+	width:20px;
 	color:#fff;
-	writing-mode: tb-rl;
+	background-color:rgba(255,255,255,0.2);
+	writing-mode:tb-rl;
     transform:rotate(-180deg);
 	border-top:1px;
+	font-size:4px;
+}
+
+.bar:hover {
+	background-color:rgba(255,255,255,0.4);
 }
 
 .tabs {
-	width:200px;
+	width:400px;
 	height:200px;
 }
 
@@ -181,6 +191,10 @@ body {
 	background-color:rgba(0,0,0,0.2);
 	line-height:12px;
 	padding:10px;
+}
+
+.tab:hover {
+	background-color:rgba(255,255,255,0.1);
 }
 
 .viewport {
@@ -244,14 +258,17 @@ body {
 
 .block {
 	position:relative;
+	display:block;
 	float:left;
 	font-size:10px;
 	width:180px;
-	height:180px;
+	height:120px;
 	border:1px solid rgba(0,0,0,0.8);
 	background:rgba(0,0,0,0.2);
 	color:rgba(255,255,255,0.8);
-	/*overflow:auto;*/
+	overflow:auto;
+	scrollbar-color: rgba(255,255,255,0.2) rgba(0,0,0,0.8);
+	scrollbar-width: thin;
 }
 
 .left {
@@ -321,3 +338,41 @@ table td:hover {
 	height:100px;
 	background-color: #c7c7c7;
 }
+
+.topMenu {
+	position:"fixed";
+	left:0;
+	right:0;
+	top:0;
+	height:100px;
+	background-color:rgba(0,0,0,0.9);
+}
+
+.topMenu .block{
+	width:auto!important;
+	padding:10px;
+	height:auto;
+}
+
+.block:hover{
+	box-shadow:inset 0px 0px 10px rgba(0,0,0,0.9);
+}
+
+.txt1 {
+	font-family:"Segoe UI Light";
+	font-size: 200px;
+	color: rgba(0,0,0,0.4);
+}
+
+.tile {
+	display:inline-block;
+	line-height:50px;
+	padding:0px 50px 0px 50px;
+	background-color: rgba(0,0,0,0.4);
+	margin:5px;
+}
+
+.tile:hover {
+	background-color: rgba(0,0,0,0.2);
+}
+	

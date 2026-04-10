@@ -29,8 +29,7 @@ var d={
 
 function alias(id,fn,context){
     context = context?context:window;
-    context[id]=fn;
-    return "Ok";
+    return context[id]=fn;
 }
 
 function RegisterService(service){
@@ -49,39 +48,39 @@ function o(args){
 		StatusBar.update(this.target.textContent); // depends on what value you want to display
 	})
 	*/
-	
+	mState.elements.push(r);
 	mState[args.id]=r;
-	
 	for(let prop in args){
 		switch(prop){
-			case "text":{				
-				if(typeof args[prop]=="object"){
-					if(args[prop].length>0){
-						args[prop].forEach(function(item){
-							if(typeof item=="object"){
-								r.appendChild(item)
-							}else{
-								r.textContent+=item; //str
-							}
-						})
-					}else{
-						r.appendChild(args[prop])
-					}
+			case "type":{		 // no array means 0/0 // only stacked		
+				if(args[prop]=="iframe"){
+					r=document.createElement("iframe");
 				}
+			}
+			break;
+			case "text":{		 // no array means 0/0 // only stacked		
 				if(typeof args[prop]=="string"){
 					r.textContent=args[prop];
+				}else if(typeof args[prop]=="object"){
+					for (let node of args[prop]) {
+						r.appendChild(node);
+					}
 				}
-				
 			}
 			break;
 			case "class":
 				r.setAttribute("class", args[prop]);
 				mState[args[prop]]=r;
 			break;
-			case "siblings":
-				for (let sibling of args[prop]) {
-					r.appendChild(sibling);
+			case "node":{
+				if(typeof args[prop]=="object"){ // this could be used dynamically
+					for (let node of args[prop]) {
+						r.appendChild(node);
+					}
+				}else{
+					r.appendChild(args[prop])
 				}
+			}
   			break;
 			case "editable":
 				r.setAttribute("contentEditable",true);
@@ -97,8 +96,6 @@ function o(args){
   			break;
 		}
 	}
-	
-	mState.elements.push(r);
 	return r;
 }
 
@@ -215,23 +212,19 @@ function l(elm,pathName){ // key down enter
 	});
 }
 
-function chart(arr){
-	var canvas=o({
-		class:"canvas",
+function chart(arr,size=2){
+	var elm=o({
+		class:"chart",
 	});
-	arr.map(function(item){
-		b(canvas,o({
-			class:"bar",
-			text:item.text,
-			backgroundColor:"rgba(0,0,0,0)",
-			borderColor:"rgba(0,0,0,0.8)",
-			height:item.value+"px",
+	arr.map(function(val){
+		b(elm,y(o({	class:"bar",}),{
+			height:val*size+"px",
 		}))
-	})
-	return canvas;
+	})	
+	return elm;
 }
-
-function grid(props){ // basic 3  / 4 grid
+// chart([1,20,22,12,5])
+function grid(props){
 	return grid;
 }
 
@@ -258,7 +251,7 @@ function button(text){
 function list(id,arr){
 	var r=o({id,class:"list"});
 	arr.map(function(item){
-		b(r,o({class:"listItem",text:item.text}))
+		b(r,o({class:"listItem",text:item}))
 	})
 	return r;
 }
@@ -286,4 +279,6 @@ function block(text){ // props handler
 	})
 	return elm;
 }
+
+function barIndicator(value){}
 

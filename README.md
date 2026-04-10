@@ -7,7 +7,7 @@ Still features as editing and saving the
 current state of the browser 
 are not implemented in stable. 
 
-## Usage
+## Component / Usage
 o  create an element
 e  add event listener
 s  select element by id
@@ -28,19 +28,18 @@ table  generate a table
 RegisterService  registering a service object at globals scope
 ChangeStage  	 things to do when a service is called
 
-
-## Script
-setting up storage related code for use
-
 ## Objectives>>
+time component
+log console input save to localStorage and load at startup 
 needs to be cleaned up
-addressbar incl. search engines combined.
+addressbar (oage loading in document)
 keymapping
 clipboard >> explained
->> ctrl f navigate >> explained
+time related implementations
+>> ctrl + f navigation >> explained
 >> undo/redo >> explained
 router service: switch page, follow link..
-menu service
+menu services(closeUntil, previous panels)
 automation > recording macro's <--
 list of random mapped sequences
 save page option

@@ -5,7 +5,7 @@ RegisterService({
 	set:function(item){
 		key=window.localStorage.length+1;
 		window.localStorage.setItem("key"+key,item)
-	},
+	}, // rename to more conventional
 	getList:function(listName){
 		var parser=JSON.parse;
 		return parser(localStorage[listName]);
@@ -16,7 +16,7 @@ RegisterService({
 		list.push(listItem);
 		list=JSON.stringify(list);
 		return localStorage.setItem(listName,list);
-	},
+	}, //
 	get:function(key){
 		return localStorage[key];
 	},
@@ -76,8 +76,7 @@ function tabs(id,arr){
 	return wrapper;
 }
 
-RegisterService({
-	name:"StatusBar",
+RegisterService({name:"StatusBar",
 	statusInfo:"",
 	init:function(){
 		b(root,o({ // or replace call
@@ -99,12 +98,11 @@ RegisterService({
 	
 StatusBar.init();
 
-RegisterService({
-	name:"Router",
+RegisterService({name:"Router",
 	routes:{
 		Projecten:"Projects",
 		Portfolio:"Portfolio",
-		test:"Page 3",
+		Locatie:"Location",
 	},
 	view:"view",
 	switchTo:function(pathId){
@@ -117,10 +115,139 @@ RegisterService({
 	}
 })
 
-RegisterService({
-	name:"Keymap",
-	set:function(){},
+RegisterService({name:"Keymap",
+	set:function(key,fn){
+		/*
+		
+	e(document,keypress,function(){})
+	
+	this.key==key;
+	
+	*
+	var self=this;
+	self.mappings.push(
+	{key,fn}
+	)
+		*/
+	},
 	map:{
 		"ctrl+k":"<function>",
+		"k":"<function>",
 	},
 })
+
+/*
+	# features to implement:
+	*
+	*
+	*
+	getList:function(listName){
+		var parser=JSON.parse;
+		return parser(localStorage[listName]);
+	},
+	appendToList:function(listName,listItem){
+		var self=this;
+		var list=self.getList(listName);
+		list.push(listItem);
+		list=JSON.stringify(list);
+		return localStorage.setItem(listName,list);
+	},
+	
+	* Collection name list --> Collections[name]
+
+	
+
+	sidebarRight=o({class:"sidebar-right"});
+	b(root,sidebarRight)
+	if(!Storage.get("selects")){
+		Storage.save("selects",'["Type here.."]')
+	}
+	function updateView(){
+		JSON.parse(Storage.get("selects")).map((val,idx)=>{
+			var item=o({class:"block",text:val});
+			
+			
+			
+			b(item,e(button("remove"),"click",function(){
+				// Storage get selects filter
+			})) // 
+			b(sidebarRight,item)
+		})	
+	}
+	
+	
+	RegisterService({
+		name:"Collection",
+		collections:Storage,
+		newCollection:function(name){
+			* Save name to storage
+			Storage.save(name,[]); // be sure stringify conversion
+		},
+		insert:function(name,item){
+			Storage.appendToList(name,item)
+
+		},
+		getList:function(name){
+			
+			return Storage.getList(name)
+		},
+		getItem:function(list,item){
+			
+			return Storage.getList(name)[item];
+		},
+		init:function(componentId){
+			var r=o({id:componentId,class:"listView"});
+				
+			* get all items from localStorage(parse json)
+			loop over the Array
+			bind every item to listView handler
+			
+			do the same thing right after adding to the list
+
+@ check previous code for syntax
+@ check terminology for naming methos of this service api
+
+
+
+			Storage.save
+			self.storage.push
+		},
+		
+		..............................................
+		
+	})
+
+	check Storage.save conversion
+
+*/
+
+RegisterService({
+		name:"Collections",
+		store:[],
+		new:function(name,id){ // abstraction "Collections"
+			var r=o({id,class:"listView"});
+			Storage.save(name,"[]") // json conversion
+		},
+		insert:function(name,item){
+			Storage.appendToList(name,item)
+		},
+		get:function(name){
+			return Storage.getList(name); // get"List" / get
+		},
+		init:function(){
+			var self=this;
+			var parser=JSON.parse;
+			if(!Storage.get("Collections")){
+				self.new("Collections")
+			}
+			return parser(Storage.get("Collections"))
+					.map(function(item){
+				this.store+=item;
+				return item;
+			});
+		}	
+	})
+	
+	
+Collections.new("Feed1")
+Collections.init();
